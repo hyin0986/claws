@@ -40,7 +40,6 @@ def compose_root(
         for port in device_cfg.adc_port_map.values()
     ]
 
-    _MAX_FIFO_SIZE: Final[int] = 2**14
     for channel, buffer in zip(device_cfg.adc_port_map, ring_buffers):
         drop_fifo = Fifo(
             name=f"AdcDropFifo[{channel}]",
@@ -50,7 +49,7 @@ def compose_root(
         ring_proc = hardware_core.RingBufferProcessor(
             name=f"AdcProcessor[{channel}]",
             sampleRate=device_cfg.sample_rate_hz,
-            maxSize=_MAX_FIFO_SIZE,
+            maxSize=device_cfg.max_buffer_size,
         )
 
         buffer >> drop_fifo >> ring_proc

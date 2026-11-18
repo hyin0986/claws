@@ -24,6 +24,7 @@ class DeviceCfg:
     mem_map_port: int = 9000
     mem_map_offset: int = 0x4000_0000
     adc_port_map: dict[int, int] = field(default_factory=_default_adc_port_map)
+    max_buffer_size: int = 2**14
     sample_rate_hz: int = 125e6
 
 
