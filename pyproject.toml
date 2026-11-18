@@ -4,19 +4,29 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
 
+
 [project]
 name = "claws"
 authors = [{ name = "claws", email = "/dev/null@belle2.org" }]
 license = { file = "LICENSE" }
 classifiers = ["License :: OSI Approved :: MIT License"]
 dynamic = ["version"]
-dependencies = ["pyzmq", "numpy", "pyepics",]
+dependencies = []
+
+
+[tool.setuptools]
+package-dir = {"" = "src", "abort_trigger_daq_rpty_stmlb125_14" = "external/kek-abort-daq/firmware/python/abort_trigger_daq_rpty_stmlb125_14", "axi_soc_7000_core" = "external/kek-abort-daq/firmware/submodules/axi-soc-7000-core/python/axi_soc_7000_core"}
+packages = ["claws", "abort_trigger_daq_rpty_stmlb125_14", "axi_soc_7000_core"]
+
 
 [project.scripts]
+claws_server="claws.scripts.zmq_server:main"
+claws_pydm="claws.scripts.pydm_gui:main"
 
 
 [tool.setuptools.package-data]
-"claws.resources.static_cfg" = ["*.xml"]
+"claws.resources.xmls" = ["*.xml"]
+
 
 [project.optional-dependencies]
 dev = [

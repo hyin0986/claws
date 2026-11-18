@@ -1,42 +1,77 @@
-from dataclasses import dataclass, field, asdict
+from dataclasses import asdict
 from typing import Final
 
-from pyrogue._Root import Root
+import abort_trigger_daq_rpty_stmlb125_14 as target
+import axi_soc_7000_core.hardware.red_pitaya_stemlab_125_14 as hardware_core
+import rogue
+from pyrogue import Root
+from pyrogue.interfaces import ZmqServer
+from pyrogue.interfaces.stream import Fifo
 
-@dataclass(slots=True, frozen=True)
-class ZMQCfg:
-    host: str = "localhost"
-    port: int = 9099
+from claws.data import DeviceCfg, RootCfg, ZMQCfg
 
+_DEFAULT_ROOT_CFG: Final[RootCfg] = RootCfg()
+_DEFAULT_ZMQ_CFG: Final[ZMQCfg] = ZMQCfg()
+_DEFAULT_DEVICE_CFG: Final[DeviceCfg] = DeviceCfg()
 
-@dataclass(slots=True, frozen=True)
-class DeviceCfg:
-    host: str = "localhost"
-    mem_map_port: int = 9000
-    adc_port_map: dict[int, int] = field(default_factory=)
-
-    @staticmethod
-    def _default_adc_port_map(base_port: int = 10000) -> dict[int, int]:
-        ADCS: Final[int] = 2
-        return {adc : base_port + adc for adc in range(ADCS)}
-
-
-@dataclass(slots=True, frozen=True)
-class RootCfg:
-    name: str | None = None,
-    description: str = '',
-    expand: bool = True,
-    timeout: float = 1.0,
-    initRead: bool = False,
-    initWrite: bool = False,
-    pollEn: bool = True,
-    maxLog: int = 1000,
-    unifyLogs: bool = False
 
 class ZMQServer(Root):
-    def __init__(self, zmq_cfg: ZMQCfg = ZMQCfg(), device_cfg: DeviceCfg = DeviceCfg(), root_cfg = RootCfg) -> None:
-        super().__init__(**asdict(root_cfg))
+    def __init__(
+        self,
+        root_cfg: RootCfg = _DEFAULT_ROOT_CFG,
+        zmq_cfg: ZMQCfg = _DEFAULT_ZMQ_CFG,
+        device_cfg: DeviceCfg = _DEFAULT_DEVICE_CFG,
+    ) -> None:
+        kwargs = asdict(root_cfg)
+        super().__init__(**kwargs)
 
-        
-        
+        self.addInterface(
+            ZmqServer(root=self, addr=zmq_cfg.host, port=zmq_cfg.port)
+        )
+        self.add(
+            target.Zynq7SoC(
+                memBase=rogue.interfaces.memory.TcpClient(
+                    device_cfg.host, device_cfg.mem_map_port
+                ),
+                offset=device_cfg.mem_map_offset,  # 32-bit address space
+                n_adc_channels=len(device_cfg.adc_port_map),
+                expand=True,
+            )
+        )
 
+        self._ring_buffers = [
+            rogue.interfaces.stream.TcpClient(device_cfg.host, port)
+            for port in device_cfg.adc_port_map.values()
+        ]
+
+        _MAX_FIFO_SIZE: Final[int] = 2**14
+        for channel, buffer in zip(
+            device_cfg.adc_port_map, self._ring_buffers
+        ):
+            drop_fifo = Fifo(
+                name=f"AdcDropFifo[{channel}]",
+                maxDepth=1,
+                hidden=False,
+            )
+            ring_proc = hardware_core.RingBufferProcessor(
+                name=f"AdcProcessor[{channel}]",
+                sampleRate=device_cfg.sample_rate_hz,
+                maxSize=_MAX_FIFO_SIZE,
+            )
+
+            buffer >> drop_fifo >> ring_proc
+            self.add(drop_fifo)
+            self.add(ring_proc)
+
+        def unhide_recursive(dev: Root):
+            if dev.inGroup("Hidden"):
+                dev.removeFromGroup("Hidden")
+            if hasattr(dev, "_nodes"):
+                for node_pointer in dev._nodes.values():
+                    unhide_recursive(node_pointer)
+
+        unhide_recursive(self)
+
+    def start(self) -> None:
+        super().start()
+        self.ReadAll()

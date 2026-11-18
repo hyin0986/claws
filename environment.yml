@@ -1,0 +1,12 @@
+name: claws_env
+channels:
+  - conda-forge
+  - tidair-tag
+dependencies:
+  - rogue
+  - setuptools
+  - gitpython
+  - pip
+  - wheel
+  - pip:
+      - "surf @ git+https://github.com/slaclab/surf.git"
