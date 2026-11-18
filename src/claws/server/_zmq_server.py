@@ -16,28 +16,32 @@ _DEFAULT_ZMQ_CFG: Final[ZMQCfg] = ZMQCfg()
 _DEFAULT_DEVICE_CFG: Final[DeviceCfg] = DeviceCfg()
 
 
-def compose_root(root_cfg: RootCfg = _DEFAULT_ROOT_CFG,
-                 zmq_cfg: ZMQCfg = _DEFAULT_ZMQ_CFG,
-        device_cfg: DeviceCfg = _DEFAULT_DEVICE_CFG) -> Root:
+def compose_root(
+    root_cfg: RootCfg = _DEFAULT_ROOT_CFG,
+    zmq_cfg: ZMQCfg = _DEFAULT_ZMQ_CFG,
+    device_cfg: DeviceCfg = _DEFAULT_DEVICE_CFG,
+) -> Root:
     root = Root(**asdict(root_cfg))
-    root.addInterface(ZmqServer(root=root, addr=zmq_cfg.host, port=zmq_cfg.port))
-    root.add(target.Zynq7SoC(
-                memBase=rogue.interfaces.memory.TcpClient(
-                    device_cfg.host, device_cfg.mem_map_port
-                ),
-                offset=device_cfg.mem_map_offset,  # 32-bit address space
-                n_adc_channels=len(device_cfg.adc_port_map),
-                expand=True,
-            ))
+    root.addInterface(
+        ZmqServer(root=root, addr=zmq_cfg.host, port=zmq_cfg.port)
+    )
+    root.add(
+        target.Zynq7SoC(
+            memBase=rogue.interfaces.memory.TcpClient(
+                device_cfg.host, device_cfg.mem_map_port
+            ),
+            offset=device_cfg.mem_map_offset,  # 32-bit address space
+            n_adc_channels=len(device_cfg.adc_port_map),
+            expand=True,
+        )
+    )
     ring_buffers = [
         rogue.interfaces.stream.TcpClient(device_cfg.host, port)
         for port in device_cfg.adc_port_map.values()
     ]
 
     _MAX_FIFO_SIZE: Final[int] = 2**14
-    for channel, buffer in zip(
-        device_cfg.adc_port_map, ring_buffers
-    ):
+    for channel, buffer in zip(device_cfg.adc_port_map, ring_buffers):
         drop_fifo = Fifo(
             name=f"AdcDropFifo[{channel}]",
             maxDepth=1,
