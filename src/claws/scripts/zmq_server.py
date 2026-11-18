@@ -63,9 +63,10 @@ def main() -> None:
         host=args.device_host,
         mem_map_port=args.device_mem_port,
         adc_port_map={
-            channel: args.device_adc_base_port + channel
+            channel: args.device_adc_base_port + 2*channel
             for channel in range(ADCS)
         },
+        sample_rate_hz=125e6,
     )
     root_cfg = RootCfg(timeout=1)
 
