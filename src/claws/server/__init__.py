@@ -1,3 +1,3 @@
-from ._zmq_server import ZMQServer
+from ._zmq_server import compose_root
 
-__all__ = ["ZMQServer"]
+__all__ = ["compose_root"]

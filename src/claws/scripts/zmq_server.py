@@ -2,7 +2,7 @@ import argparse
 
 import pyrogue
 
-from claws.server import ZMQServer
+from claws.server._zmq_server import compose_root
 from claws.data import DeviceCfg, RootCfg, ZMQCfg
 
 
@@ -68,9 +68,9 @@ def main() -> None:
         },
         sample_rate_hz=125e6,
     )
-    root_cfg = RootCfg(timeout=1)
+    root_cfg = RootCfg(timeout=1, name="claws")
 
-    with ZMQServer(
+    with compose_root(
         root_cfg=root_cfg, zmq_cfg=zmq_cfg, device_cfg=dev_cfg
     ) as _:
         pyrogue.waitCntrlC()

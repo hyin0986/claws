@@ -33,7 +33,7 @@ class RootCfg:
     description: str = ""
     expand: bool = True
     timeout: float = 1.0
-    initRead: bool = False
+    initRead: bool = True
     initWrite: bool = False
     pollEn: bool = True
     maxLog: int = 1000
