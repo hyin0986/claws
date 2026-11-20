@@ -1,4 +1,4 @@
-from ._configuration import DeviceCfg, RootCfg, ZMQCfg
+from ._pyrogue_cfgs import DeviceCfg, RootCfg, ZMQCfg
 
 __all__ = [
     "DeviceCfg",

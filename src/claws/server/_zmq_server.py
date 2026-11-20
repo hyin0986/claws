@@ -1,13 +1,13 @@
 from dataclasses import asdict
 from typing import Final
 
-import rogue
-from pyrogue import Root
-from pyrogue.interfaces import ZmqServer
-from pyrogue.interfaces.stream import Fifo
-
 import abort_trigger_daq_rpty_stmlb125_14 as target
 import axi_soc_7000_core.hardware.red_pitaya_stemlab_125_14 as hardware_core
+import rogue
+
+from pyrogue._Root import Root
+from pyrogue.interfaces import ZmqServer
+from pyrogue.interfaces.stream import Fifo
 
 from claws.data import DeviceCfg, RootCfg, ZMQCfg
 
@@ -55,4 +55,5 @@ def compose_root(
         buffer >> drop_fifo >> ring_proc
         root.add(drop_fifo)
         root.add(ring_proc)
+
     return root

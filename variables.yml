@@ -1,0 +1,2898 @@
+arrays:
+- !claws.ArrayLeafNode
+  description: Data Frame Container
+  mode: RW
+  name: Data
+  path: claws.AdcProcessor[0].Data
+  precision: null
+  size: 1
+  type: uint8(1,)
+  units: null
+- !claws.ArrayLeafNode
+  description: Time steps (us)
+  mode: RW
+  name: Time
+  path: claws.AdcProcessor[0].Time
+  precision: null
+  size: 16384
+  type: float64(16384,)
+  units: null
+- !claws.ArrayLeafNode
+  description: Data Frame Container
+  mode: RW
+  name: WaveformData
+  path: claws.AdcProcessor[0].WaveformData
+  precision: null
+  size: 16384
+  type: int16(16384,)
+  units: null
+- !claws.ArrayLeafNode
+  description: Freq steps (MHz)
+  mode: RW
+  name: Freq
+  path: claws.AdcProcessor[0].Freq
+  precision: null
+  size: 8192
+  type: float64(8192,)
+  units: null
+- !claws.ArrayLeafNode
+  description: Magnitude Frame Container
+  mode: RW
+  name: Magnitude
+  path: claws.AdcProcessor[0].Magnitude
+  precision: null
+  size: 8192
+  type: float32(8192,)
+  units: null
+- !claws.ArrayLeafNode
+  description: Data Frame Container
+  mode: RW
+  name: Data
+  path: claws.AdcProcessor[1].Data
+  precision: null
+  size: 1
+  type: uint8(1,)
+  units: null
+- !claws.ArrayLeafNode
+  description: Time steps (us)
+  mode: RW
+  name: Time
+  path: claws.AdcProcessor[1].Time
+  precision: null
+  size: 16384
+  type: float64(16384,)
+  units: null
+- !claws.ArrayLeafNode
+  description: Data Frame Container
+  mode: RW
+  name: WaveformData
+  path: claws.AdcProcessor[1].WaveformData
+  precision: null
+  size: 16384
+  type: int16(16384,)
+  units: null
+- !claws.ArrayLeafNode
+  description: Freq steps (MHz)
+  mode: RW
+  name: Freq
+  path: claws.AdcProcessor[1].Freq
+  precision: null
+  size: 8192
+  type: float64(8192,)
+  units: null
+- !claws.ArrayLeafNode
+  description: Magnitude Frame Container
+  mode: RW
+  name: Magnitude
+  path: claws.AdcProcessor[1].Magnitude
+  precision: null
+  size: 8192
+  type: float32(8192,)
+  units: null
+enums:
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Configuration Flag To Always Write Non Stale Blocks For WriteAll, LoadConfig
+    and setYaml
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: ForceWrite
+  path: claws.ForceWrite
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Configuration Flag To Execute Initialize after LoadConfig or setYaml
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: InitAfterConfig
+  path: claws.InitAfterConfig
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: ''
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: PollEn
+  path: claws.PollEn
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Get configuration in YAML string. Passed arg is a boolean indicating
+    if a full system read should be generated. Return data is configuration as a YAML
+    string.
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: GetYamlConfig
+  path: claws.GetYamlConfig
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Get current state as YAML string. Pass read first arg.
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: GetYamlState
+  path: claws.GetYamlState
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.LoadConfigProcess.enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.LoadConfigProcess.ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Status values indicating if operation is running.
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RO
+  name: Running
+  path: claws.LoadConfigProcess.Running
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: 'Source of configuration data: File reads from ConfigFile; String applies
+    YamlString.'
+  enum_labels:
+  - File
+  - String
+  mode: RW
+  name: LoadMode
+  path: claws.LoadConfigProcess.LoadMode
+  precision: null
+  type: int
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.SaveConfigProcess.enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.SaveConfigProcess.ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Status values indicating if operation is running.
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RO
+  name: Running
+  path: claws.SaveConfigProcess.Running
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: 'Variable set to include: Config uses RW/WO modes excluding NoConfig;
+    Status uses RW/RO/WO modes excluding NoState.'
+  enum_labels:
+  - Config
+  - Status
+  mode: RW
+  name: DataType
+  path: claws.SaveConfigProcess.DataType
+  precision: null
+  type: int
+  units: null
+- !claws.EnumLeafNode
+  description: 'Output destination: File writes to ConfigFile; String stores the result
+    in YamlString.'
+  enum_labels:
+  - File
+  - String
+  mode: RW
+  name: SaveMode
+  path: claws.SaveConfigProcess.SaveMode
+  precision: null
+  type: int
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.Zynq7SoC.enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.Zynq7SoC.ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.Zynq7SoC.AxiSocCore.enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.Zynq7SoC.AxiSocCore.ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: ''
+  enum_labels:
+  - Undefined
+  - RptyStemlab125-14
+  mode: RO
+  name: HW_TYPE_C
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.HW_TYPE_C
+  precision: null
+  type: UInt32
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.Zynq7SoC.Application.enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.Zynq7SoC.Application.ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.Zynq7SoC.Application.TestRegister.enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.Zynq7SoC.Application.TestRegister.ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[0].enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[0].ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Current state of the trigger FSM
+  enum_labels:
+  - IDLE_S
+  - ARMED_S
+  - WAIT_S
+  mode: RO
+  name: TrigState
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[0].TrigState
+  precision: null
+  type: UInt2
+  units: null
+- !claws.EnumLeafNode
+  description: Current state of the trigger FSM
+  enum_labels:
+  - IDLE_S
+  - MOVE_S
+  - CLEARED_S
+  mode: RO
+  name: DataState
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[0].DataState
+  precision: null
+  type: UInt2
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[1].enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[1].ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Current state of the trigger FSM
+  enum_labels:
+  - IDLE_S
+  - ARMED_S
+  - WAIT_S
+  mode: RO
+  name: TrigState
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[1].TrigState
+  precision: null
+  type: UInt2
+  units: null
+- !claws.EnumLeafNode
+  description: Current state of the trigger FSM
+  enum_labels:
+  - IDLE_S
+  - MOVE_S
+  - CLEARED_S
+  mode: RO
+  name: DataState
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[1].DataState
+  precision: null
+  type: UInt2
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.Zynq7SoC.Application.RevSigCtrl.enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.Zynq7SoC.Application.RevSigCtrl.ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Select real or dummy revolution signal
+  enum_labels:
+  - realRev
+  - dummyRev
+  mode: RW
+  name: revSelect
+  path: claws.Zynq7SoC.Application.RevSigCtrl.revSelect
+  precision: null
+  type: UInt1
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.Zynq7SoC.Application.AbortTrigs.enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.Zynq7SoC.Application.AbortTrigs.ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[0].enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[0].ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Trigger direction (0=trigger when above, 1=trigger when below).
+  enum_labels:
+  - ABOVE
+  - BELOW
+  mode: RW
+  name: Direction
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[0].Direction
+  precision: null
+  type: UInt1
+  units: null
+- !claws.EnumLeafNode
+  description: Register indicating the state of the trigger FSM
+  enum_labels:
+  - IDLE
+  - ARMED
+  - HYSTERESIS
+  mode: RO
+  name: stateReg
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[0].stateReg
+  precision: null
+  type: UInt8
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[1].enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[1].ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Trigger direction (0=trigger when above, 1=trigger when below).
+  enum_labels:
+  - ABOVE
+  - BELOW
+  mode: RW
+  name: Direction
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[1].Direction
+  precision: null
+  type: UInt1
+  units: null
+- !claws.EnumLeafNode
+  description: Register indicating the state of the trigger FSM
+  enum_labels:
+  - IDLE
+  - ARMED
+  - HYSTERESIS
+  mode: RO
+  name: stateReg
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[1].stateReg
+  precision: null
+  type: UInt8
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[0].enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[0].ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Trigger direction (0=trigger when above, 1=trigger when below).
+  enum_labels:
+  - ABOVE
+  - BELOW
+  mode: RW
+  name: Direction
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[0].Direction
+  precision: null
+  type: UInt1
+  units: null
+- !claws.EnumLeafNode
+  description: Register indicating the state of the trigger FSM
+  enum_labels:
+  - IDLE
+  - ARMED
+  - COUNT
+  mode: RO
+  name: stateReg
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[0].stateReg
+  precision: null
+  type: UInt8
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[1].enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[1].ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Trigger direction (0=trigger when above, 1=trigger when below).
+  enum_labels:
+  - ABOVE
+  - BELOW
+  mode: RW
+  name: Direction
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[1].Direction
+  precision: null
+  type: UInt1
+  units: null
+- !claws.EnumLeafNode
+  description: Register indicating the state of the trigger FSM
+  enum_labels:
+  - IDLE
+  - ARMED
+  - COUNT
+  mode: RO
+  name: stateReg
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[1].stateReg
+  precision: null
+  type: UInt8
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Register indicating the state of the trigger FSM
+  enum_labels:
+  - IDLE
+  - ARMED
+  mode: RO
+  name: stateReg
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].stateReg
+  precision: null
+  type: UInt32
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Register indicating the state of the trigger FSM
+  enum_labels:
+  - IDLE
+  - ARMED
+  mode: RO
+  name: stateReg
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].stateReg
+  precision: null
+  type: UInt32
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.Zynq7SoC.Application.FrameRateLimiter.enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.Zynq7SoC.Application.FrameRateLimiter.ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.AdcDropFifo[0].enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.AdcDropFifo[0].ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.AdcProcessor[0].enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.AdcProcessor[0].ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Frame Rx Enable
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: RxEnable
+  path: claws.AdcProcessor[0].RxEnable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Data has been updated flag. Set in the TRUE in DataReceiver and reset
+    to zero by application
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: Updated
+  path: claws.AdcProcessor[0].Updated
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: ''
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: NewDataReady
+  path: claws.AdcProcessor[0].NewDataReady
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.AdcDropFifo[1].enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.AdcDropFifo[1].ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Determines if device is enabled for hardware access
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: enable
+  path: claws.AdcProcessor[1].enable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Force read of device without recursion
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: WO
+  name: ReadDevice
+  path: claws.AdcProcessor[1].ReadDevice
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Frame Rx Enable
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: RxEnable
+  path: claws.AdcProcessor[1].RxEnable
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: Data has been updated flag. Set in the TRUE in DataReceiver and reset
+    to zero by application
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: Updated
+  path: claws.AdcProcessor[1].Updated
+  precision: null
+  type: bool
+  units: null
+- !claws.EnumLeafNode
+  description: ''
+  enum_labels:
+  - 'False'
+  - 'True'
+  mode: RW
+  name: NewDataReady
+  path: claws.AdcProcessor[1].NewDataReady
+  precision: null
+  type: bool
+  units: null
+variables:
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Rogue Version String
+  mode: RO
+  name: RogueVersion
+  path: claws.RogueVersion
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Rogue Library Directory
+  mode: RO
+  name: RogueDirectory
+  path: claws.RogueDirectory
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: String containing newline separated system logic entries
+  mode: RO
+  name: SystemLog
+  path: claws.SystemLog
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: String containing last system log entry
+  mode: RO
+  name: SystemLogLast
+  path: claws.SystemLogLast
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Current Time In Seconds Since EPOCH UTC
+  mode: RO
+  name: Time
+  path: claws.Time
+  precision: null
+  type: float
+  units: null
+- !claws.LeafNode
+  description: Local Time
+  mode: RO
+  name: LocalTime
+  path: claws.LocalTime
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Write all values to the hardware
+  mode: WO
+  name: WriteAll
+  path: claws.WriteAll
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Read all values from the hardware
+  mode: WO
+  name: ReadAll
+  path: claws.ReadAll
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Save state to file. Data is saved in YAML format. Passed arg is full
+    path to file to sore data to.
+  mode: WO
+  name: SaveState
+  path: claws.SaveState
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Save configuration to file. Data is saved in YAML format. Passed arg
+    is full path to file to store data to.
+  mode: WO
+  name: SaveConfig
+  path: claws.SaveConfig
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Read configuration from file. Data is read in YAML format. Passed arg
+    is full path to file to read data from.
+  mode: WO
+  name: LoadConfig
+  path: claws.LoadConfig
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Save a dump of the remote variable state
+  mode: WO
+  name: RemoteVariableDump
+  path: claws.RemoteVariableDump
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Save a dump of the remote variable state
+  mode: WO
+  name: RemoteConfigDump
+  path: claws.RemoteConfigDump
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Generate a soft reset to each device in the tree
+  mode: WO
+  name: Initialize
+  path: claws.Initialize
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Generate a hard reset to each device in the tree
+  mode: WO
+  name: HardReset
+  path: claws.HardReset
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Generate a count reset to each device in the tree
+  mode: WO
+  name: CountReset
+  path: claws.CountReset
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Clear the message log contained in the SystemLog variable
+  mode: WO
+  name: ClearLog
+  path: claws.ClearLog
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Set configuration from YAML string. Passed arg is configuration string
+    in YAML format.
+  mode: WO
+  name: SetYamlConfig
+  path: claws.SetYamlConfig
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.LoadConfigProcess.WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Start process. No Args.
+  mode: WO
+  name: Start
+  path: claws.LoadConfigProcess.Start
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Stop process. No Args.
+  mode: WO
+  name: Stop
+  path: claws.LoadConfigProcess.Stop
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: 'Percent complete: 0 - 100 %.'
+  mode: RO
+  name: Progress
+  path: claws.LoadConfigProcess.Progress
+  precision: null
+  type: float
+  units: null
+- !claws.LeafNode
+  description: Process status message. Prefixed with 'Error:' if an error occurred.
+  mode: RO
+  name: Message
+  path: claws.LoadConfigProcess.Message
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Current number of completed steps. Prefer setStep() or incrementSteps().
+  mode: RO
+  name: Step
+  path: claws.LoadConfigProcess.Step
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Total number of process steps. Prefer setTotalSteps().
+  mode: RO
+  name: TotalSteps
+  path: claws.LoadConfigProcess.TotalSteps
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: updateGroup leak period in seconds.
+  mode: RW
+  name: UpdatePeriod
+  path: claws.LoadConfigProcess.UpdatePeriod
+  precision: null
+  type: float
+  units: null
+- !claws.LeafNode
+  description: Path to YAML configuration file. Used when LoadMode is File.
+  mode: RW
+  name: ConfigFile
+  path: claws.LoadConfigProcess.ConfigFile
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: YAML configuration text to apply. Used when LoadMode is String.
+  mode: RW
+  name: YamlString
+  path: claws.LoadConfigProcess.YamlString
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.SaveConfigProcess.WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Start process. No Args.
+  mode: WO
+  name: Start
+  path: claws.SaveConfigProcess.Start
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Stop process. No Args.
+  mode: WO
+  name: Stop
+  path: claws.SaveConfigProcess.Stop
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: 'Percent complete: 0 - 100 %.'
+  mode: RO
+  name: Progress
+  path: claws.SaveConfigProcess.Progress
+  precision: null
+  type: float
+  units: null
+- !claws.LeafNode
+  description: Process status message. Prefixed with 'Error:' if an error occurred.
+  mode: RO
+  name: Message
+  path: claws.SaveConfigProcess.Message
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Current number of completed steps. Prefer setStep() or incrementSteps().
+  mode: RO
+  name: Step
+  path: claws.SaveConfigProcess.Step
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Total number of process steps. Prefer setTotalSteps().
+  mode: RO
+  name: TotalSteps
+  path: claws.SaveConfigProcess.TotalSteps
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: updateGroup leak period in seconds.
+  mode: RW
+  name: UpdatePeriod
+  path: claws.SaveConfigProcess.UpdatePeriod
+  precision: null
+  type: float
+  units: null
+- !claws.LeafNode
+  description: Output file path. Used when SaveMode is File. Auto-named with a timestamp
+    prefix if empty.
+  mode: RW
+  name: ConfigFile
+  path: claws.SaveConfigProcess.ConfigFile
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Captured YAML output. Populated when SaveMode is String.
+  mode: RO
+  name: YamlString
+  path: claws.SaveConfigProcess.YamlString
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.Zynq7SoC.WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.Zynq7SoC.AxiSocCore.WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: FPGA Firmware Version Number
+  mode: RO
+  name: FpgaVersion
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.FpgaVersion
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Register to test reads and writes
+  mode: RW
+  name: ScratchPad
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.ScratchPad
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Number of seconds since last reset
+  mode: RO
+  name: UpTimeCnt
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.UpTimeCnt
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Time since power up or last firmware reload
+  mode: RO
+  name: UpTime
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.UpTime
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Used to halt automatic reloads via AxiVersion
+  mode: RW
+  name: FpgaReloadHalt
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.FpgaReloadHalt
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Optional Reload the FPGA from the attached PROM
+  mode: WO
+  name: FpgaReload
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.FpgaReload
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Reload start address
+  mode: RW
+  name: FpgaReloadAddress
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.FpgaReloadAddress
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: ''
+  mode: WO
+  name: FpgaReloadAtAddress
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.FpgaReloadAtAddress
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Optional User Reset
+  mode: RW
+  name: UserReset
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.UserReset
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Toggle UserReset
+  mode: WO
+  name: UserRst
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.UserRst
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Board ID value read from DS2411 chip
+  mode: RO
+  name: FdSerial
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.FdSerial
+  precision: null
+  type: UInt64
+  units: null
+- !claws.LeafNode
+  description: Device Identification  (configured by generic)
+  mode: RO
+  name: DeviceId
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.DeviceId
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: GIT SHA-1 Hash
+  mode: RO
+  name: GitHash
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.GitHash
+  precision: null
+  type: UInt160
+  units: null
+- !claws.LeafNode
+  description: Short (7-character) GIT SHA-1 hash
+  mode: RO
+  name: GitHashShort
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.GitHashShort
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Xilinx Device DNA value burned into FPGA
+  mode: RO
+  name: DeviceDna
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.DeviceDna
+  precision: null
+  type: UInt128
+  units: null
+- !claws.LeafNode
+  description: Firmware Build String
+  mode: RO
+  name: BuildStamp
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.BuildStamp
+  precision: null
+  type: String(256)
+  units: null
+- !claws.LeafNode
+  description: Firmware image name parsed from build stamp
+  mode: RO
+  name: ImageName
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.ImageName
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Build environment parsed from build stamp
+  mode: RO
+  name: BuildEnv
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.BuildEnv
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Build server hostname parsed from build stamp
+  mode: RO
+  name: BuildServer
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.BuildServer
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Firmware build date parsed from build stamp
+  mode: RO
+  name: BuildDate
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.BuildDate
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Builder username parsed from build stamp
+  mode: RO
+  name: Builder
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.Builder
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: ''
+  mode: WO
+  name: PrintStatus
+  path: claws.Zynq7SoC.AxiSocCore.AxiVersion.PrintStatus
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.Zynq7SoC.Application.WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.Zynq7SoC.Application.TestRegister.WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: All ones
+  mode: RO
+  name: TestRegister1
+  path: claws.Zynq7SoC.Application.TestRegister.TestRegister1
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: All zeros
+  mode: RO
+  name: TestRegister2
+  path: claws.Zynq7SoC.Application.TestRegister.TestRegister2
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Alternating ones and zeros (all 'A')
+  mode: RO
+  name: TestRegister3
+  path: claws.Zynq7SoC.Application.TestRegister.TestRegister3
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[0].WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Length of ring buffer
+  mode: RO
+  name: BufferLength
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[0].BufferLength
+  precision: null
+  type: UInt20
+  units: null
+- !claws.LeafNode
+  description: Ring Buffer RAM Width configuration
+  mode: RO
+  name: RAM_ADDR_WIDTH_G
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[0].RAM_ADDR_WIDTH_G
+  precision: null
+  type: UInt8
+  units: null
+- !claws.LeafNode
+  description: current value of the trigger counter
+  mode: RO
+  name: TrigCnt
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[0].TrigCnt
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Used to burst N number of trigger frames from local triggering
+  mode: WO
+  name: TrigBurst
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[0].TrigBurst
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Sets local triggering into continuous trigger mode
+  mode: RW
+  name: ContinuousMode
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[0].ContinuousMode
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[1].WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Length of ring buffer
+  mode: RO
+  name: BufferLength
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[1].BufferLength
+  precision: null
+  type: UInt20
+  units: null
+- !claws.LeafNode
+  description: Ring Buffer RAM Width configuration
+  mode: RO
+  name: RAM_ADDR_WIDTH_G
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[1].RAM_ADDR_WIDTH_G
+  precision: null
+  type: UInt8
+  units: null
+- !claws.LeafNode
+  description: current value of the trigger counter
+  mode: RO
+  name: TrigCnt
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[1].TrigCnt
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Used to burst N number of trigger frames from local triggering
+  mode: WO
+  name: TrigBurst
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[1].TrigBurst
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Sets local triggering into continuous trigger mode
+  mode: RW
+  name: ContinuousMode
+  path: claws.Zynq7SoC.Application.AxiStreamRingBuffer[1].ContinuousMode
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.Zynq7SoC.Application.RevSigCtrl.WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Revolutions per generated trigger pulse
+  mode: RW
+  name: revCounterPresetVal
+  path: claws.Zynq7SoC.Application.RevSigCtrl.revCounterPresetVal
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Clock cycles per beam revolution used for dummy revolution signal generation
+  mode: RW
+  name: clockCounterPresetVal
+  path: claws.Zynq7SoC.Application.RevSigCtrl.clockCounterPresetVal
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Revolutions per generated trigger pulse
+  mode: RW
+  name: revPerTrig
+  path: claws.Zynq7SoC.Application.RevSigCtrl.revPerTrig
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Clock cycles per beam revolution used for dummy revolution signal generation
+  mode: RW
+  name: cyclesPerRev
+  path: claws.Zynq7SoC.Application.RevSigCtrl.cyclesPerRev
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Clock cycles per beam revolution used for dummy revolution signal generation
+  mode: RW
+  name: revPeriod
+  path: claws.Zynq7SoC.Application.RevSigCtrl.revPeriod
+  precision: null
+  type: float
+  units: null
+- !claws.LeafNode
+  description: Current value of revolution counter
+  mode: RO
+  name: revCounter
+  path: claws.Zynq7SoC.Application.RevSigCtrl.revCounter
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Current value of clock counter used for dummy revolution signal generation
+  mode: RO
+  name: clockCounter
+  path: claws.Zynq7SoC.Application.RevSigCtrl.clockCounter
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Real revolution signal input value
+  mode: RO
+  name: realRevVal
+  path: claws.Zynq7SoC.Application.RevSigCtrl.realRevVal
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Dummy revolution signal value
+  mode: RO
+  name: dummyRevVal
+  path: claws.Zynq7SoC.Application.RevSigCtrl.dummyRevVal
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Revolution signal output value
+  mode: RO
+  name: revOutVal
+  path: claws.Zynq7SoC.Application.RevSigCtrl.revOutVal
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Revolution synchronous trigger output value
+  mode: RO
+  name: revSyncTrigVal
+  path: claws.Zynq7SoC.Application.RevSigCtrl.revSyncTrigVal
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.Zynq7SoC.Application.AbortTrigs.WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Enable the Thr type trigger in the trigger output or chain
+  mode: RW
+  name: ThrEn
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrEn
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Enable the Tot type trigger in the trigger output or chain
+  mode: RW
+  name: TotEn
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotEn
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Enable the RevSyncInt type trigger in the trigger output or chain
+  mode: RW
+  name: RevSyncIntEn
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntEn
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Enable channel 0 in the trigger output or chain
+  mode: RW
+  name: Ch0En
+  path: claws.Zynq7SoC.Application.AbortTrigs.Ch0En
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Enable channel 1 in the trigger output or chain
+  mode: RW
+  name: Ch1En
+  path: claws.Zynq7SoC.Application.AbortTrigs.Ch1En
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Injection signal readback
+  mode: RO
+  name: InjSig
+  path: claws.Zynq7SoC.Application.AbortTrigs.InjSig
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Injection signal delay counter running flag
+  mode: RO
+  name: InjSigDlyCntRun
+  path: claws.Zynq7SoC.Application.AbortTrigs.InjSigDlyCntRun
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Injection veto currently active (veto signal high)
+  mode: RO
+  name: InjVetActive
+  path: claws.Zynq7SoC.Application.AbortTrigs.InjVetActive
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Trigger delay counter running flag readback
+  mode: RO
+  name: TrigDlyCntRun
+  path: claws.Zynq7SoC.Application.AbortTrigs.TrigDlyCntRun
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Injection signal delay (in clock cycles)
+  mode: RW
+  name: InjSigDly
+  path: claws.Zynq7SoC.Application.AbortTrigs.InjSigDly
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Injection signal delay (in us)
+  mode: RW
+  name: InjSigDlyUs
+  path: claws.Zynq7SoC.Application.AbortTrigs.InjSigDlyUs
+  precision: null
+  type: float
+  units: null
+- !claws.LeafNode
+  description: Injection signal delay counter current value
+  mode: RO
+  name: InjSigDlyCnt
+  path: claws.Zynq7SoC.Application.AbortTrigs.InjSigDlyCnt
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Injection veto window length (in clock cycles)
+  mode: RW
+  name: InjVetWndLen
+  path: claws.Zynq7SoC.Application.AbortTrigs.InjVetWndLen
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Injection veto window length (in us)
+  mode: RW
+  name: InjVetWndLenUs
+  path: claws.Zynq7SoC.Application.AbortTrigs.InjVetWndLenUs
+  precision: null
+  type: float
+  units: null
+- !claws.LeafNode
+  description: Injection veto window counter current count
+  mode: RO
+  name: InjVetWndCnt
+  path: claws.Zynq7SoC.Application.AbortTrigs.InjVetWndCnt
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Injection veto enable (to block trigger outputs)
+  mode: RW
+  name: InjVetEn
+  path: claws.Zynq7SoC.Application.AbortTrigs.InjVetEn
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Delay for delayed version of trigger output (in clock cycles)
+  mode: RW
+  name: TrigDly
+  path: claws.Zynq7SoC.Application.AbortTrigs.TrigDly
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Delay for delayed version of trigger output (in us)
+  mode: RW
+  name: TrigDlyUs
+  path: claws.Zynq7SoC.Application.AbortTrigs.TrigDlyUs
+  precision: null
+  type: float
+  units: null
+- !claws.LeafNode
+  description: Count for delayed version of trigger output
+  mode: RO
+  name: TrigDlyCnt
+  path: claws.Zynq7SoC.Application.AbortTrigs.TrigDlyCnt
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[0].WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Trigger threshold
+  mode: RW
+  name: Threshold
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[0].Threshold
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Hysteresis around the threshold. Ignored if hysteresis disabled.
+  mode: RW
+  name: Hysteresis
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[0].Hysteresis
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Hysteresis enable bit
+  mode: RW
+  name: HysteresisEn
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[0].HysteresisEn
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Set to arm trigger. Reset to 0 to disarm. Automatically reset when
+    trigger FSM returns to idle.
+  mode: WO
+  name: Arm
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[0].Arm
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Set to automatically re-arm after triggered.
+  mode: RW
+  name: KeepArm
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[0].KeepArm
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Force single trigger pulse output. Does not affect the state of the
+    FSM.
+  mode: WO
+  name: ForceTrig
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[0].ForceTrig
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Trigger output signal readback
+  mode: RO
+  name: TriggerOut
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[0].TriggerOut
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: String indicating the current state
+  mode: RO
+  name: stateStr
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[0].stateStr
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[1].WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Trigger threshold
+  mode: RW
+  name: Threshold
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[1].Threshold
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Hysteresis around the threshold. Ignored if hysteresis disabled.
+  mode: RW
+  name: Hysteresis
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[1].Hysteresis
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Hysteresis enable bit
+  mode: RW
+  name: HysteresisEn
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[1].HysteresisEn
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Set to arm trigger. Reset to 0 to disarm. Automatically reset when
+    trigger FSM returns to idle.
+  mode: WO
+  name: Arm
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[1].Arm
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Set to automatically re-arm after triggered.
+  mode: RW
+  name: KeepArm
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[1].KeepArm
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Force single trigger pulse output. Does not affect the state of the
+    FSM.
+  mode: WO
+  name: ForceTrig
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[1].ForceTrig
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Trigger output signal readback
+  mode: RO
+  name: TriggerOut
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[1].TriggerOut
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: String indicating the current state
+  mode: RO
+  name: stateStr
+  path: claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[1].stateStr
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[0].WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Trigger threshold
+  mode: RW
+  name: Threshold
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[0].Threshold
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Hysteresis around the threshold. Ignored if hysteresis disabled.
+  mode: RW
+  name: Hysteresis
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[0].Hysteresis
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Hysteresis enable bit
+  mode: RW
+  name: HysteresisEn
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[0].HysteresisEn
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Set to arm trigger. Reset to 0 to disarm. Automatically reset when
+    trigger FSM returns to idle.
+  mode: WO
+  name: Arm
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[0].Arm
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Set to automatically re-arm after triggered.
+  mode: RW
+  name: KeepArm
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[0].KeepArm
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Force single trigger pulse output. Does not affect the state of the
+    FSM.
+  mode: WO
+  name: ForceTrig
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[0].ForceTrig
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Trigger output signal readback
+  mode: RO
+  name: TriggerOut
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[0].TriggerOut
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: String indicating the current state
+  mode: RO
+  name: stateStr
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[0].stateStr
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Preset value for time over threshold counter used in trigger logic
+  mode: RW
+  name: TotCountTrig
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[0].TotCountTrig
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Time over threshold value in microseconds at which to trigger
+  mode: RW
+  name: TotUs
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[0].TotUs
+  precision: null
+  type: float
+  units: null
+- !claws.LeafNode
+  description: Readback of time over threshold counter used in trigger logic
+  mode: RO
+  name: TotCountReadback
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[0].TotCountReadback
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[1].WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Trigger threshold
+  mode: RW
+  name: Threshold
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[1].Threshold
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Hysteresis around the threshold. Ignored if hysteresis disabled.
+  mode: RW
+  name: Hysteresis
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[1].Hysteresis
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Hysteresis enable bit
+  mode: RW
+  name: HysteresisEn
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[1].HysteresisEn
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Set to arm trigger. Reset to 0 to disarm. Automatically reset when
+    trigger FSM returns to idle.
+  mode: WO
+  name: Arm
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[1].Arm
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Set to automatically re-arm after triggered.
+  mode: RW
+  name: KeepArm
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[1].KeepArm
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Force single trigger pulse output. Does not affect the state of the
+    FSM.
+  mode: WO
+  name: ForceTrig
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[1].ForceTrig
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Trigger output signal readback
+  mode: RO
+  name: TriggerOut
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[1].TriggerOut
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: String indicating the current state
+  mode: RO
+  name: stateStr
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[1].stateStr
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Preset value for time over threshold counter used in trigger logic
+  mode: RW
+  name: TotCountTrig
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[1].TotCountTrig
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Time over threshold value in microseconds at which to trigger
+  mode: RW
+  name: TotUs
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[1].TotUs
+  precision: null
+  type: float
+  units: null
+- !claws.LeafNode
+  description: Readback of time over threshold counter used in trigger logic
+  mode: RO
+  name: TotCountReadback
+  path: claws.Zynq7SoC.Application.AbortTrigs.TotTrig[1].TotCountReadback
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Revolution signal readback
+  mode: RO
+  name: RevSig
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].RevSig
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Revolution signal delay counter running
+  mode: RO
+  name: RevSigDlyCntRun
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].RevSigDlyCntRun
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Window alignment status
+  mode: RO
+  name: WndAlgn
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].WndAlgn
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Threshold crossed strobe output readback
+  mode: RO
+  name: ThrCrs
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].ThrCrs
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Trigger output signal readback
+  mode: RO
+  name: Trig
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].Trig
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Set to arm trigger. Reset to 0 to disarm. Automatically reset when
+    trigger FSM returns to idle.
+  mode: RW
+  name: Arm
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].Arm
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Set to automatically re-arm after triggered.
+  mode: RW
+  name: KeepArm
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].KeepArm
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Force threshold crossed strobe output.
+  mode: RW
+  name: ForceThrCrs
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].ForceThrCrs
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Force trigger. Does not affect the state of the FSM.
+  mode: RW
+  name: ForceTrig
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].ForceTrig
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Revolution signal delay counter
+  mode: RO
+  name: RevSigDlyCnt
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].RevSigDlyCnt
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Revolution signal period counter to measure revolution signal period
+    (in clock cycles)
+  mode: RO
+  name: RevSigPrdCnt
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].RevSigPrdCnt
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Revolution signal period count (in clock cycles)
+  mode: RO
+  name: RevSigPrd
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].RevSigPrd
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Revolution signal period count (in us)
+  mode: RO
+  name: RevSigPrdUs
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].RevSigPrdUs
+  precision: null
+  type: float
+  units: null
+- !claws.LeafNode
+  description: Window length counter
+  mode: RO
+  name: WndCnt
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].WndCnt
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Current window index
+  mode: RO
+  name: WndIdx
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].WndIdx
+  precision: null
+  type: UInt16
+  units: null
+- !claws.LeafNode
+  description: Current ADC data value
+  mode: RO
+  name: Dat
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].Dat
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Current integral value (integral starts at start of current window)
+  mode: RO
+  name: DatInt
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].DatInt
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Integral value as latched at last deadline
+  mode: RO
+  name: DatIntLch
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].DatIntLch
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: WndCnt counter value at last threshold crossing
+  mode: RO
+  name: WndCntAtThrCrs
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].WndCntAtThrCrs
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: String indicating the current state
+  mode: RO
+  name: stateStr
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].stateStr
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Revolution signal delay until start of first window
+  mode: RW
+  name: RevSigDly
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].RevSigDly
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Maximum window index (must be <= NUM_WNDS_G hard limit)
+  mode: RW
+  name: WndIdxMax
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].WndIdxMax
+  precision: null
+  type: UInt16
+  units: null
+- !claws.LeafNode
+  description: Window 0 length (in clock cycles)
+  mode: RW
+  name: WndLngts[0]
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].WndLngts[0]
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Window 0 length (in us)
+  mode: RW
+  name: WndLngtsUs[0]
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].WndLngtsUs[0]
+  precision: null
+  type: float
+  units: null
+- !claws.LeafNode
+  description: Window 0 integral threshold
+  mode: RW
+  name: DatIntThrs[0]
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].DatIntThrs[0]
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Window 1 length (in clock cycles)
+  mode: RW
+  name: WndLngts[1]
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].WndLngts[1]
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Window 1 length (in us)
+  mode: RW
+  name: WndLngtsUs[1]
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].WndLngtsUs[1]
+  precision: null
+  type: float
+  units: null
+- !claws.LeafNode
+  description: Window 1 integral threshold
+  mode: RW
+  name: DatIntThrs[1]
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[0].DatIntThrs[1]
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Revolution signal readback
+  mode: RO
+  name: RevSig
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].RevSig
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Revolution signal delay counter running
+  mode: RO
+  name: RevSigDlyCntRun
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].RevSigDlyCntRun
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Window alignment status
+  mode: RO
+  name: WndAlgn
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].WndAlgn
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Threshold crossed strobe output readback
+  mode: RO
+  name: ThrCrs
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].ThrCrs
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Trigger output signal readback
+  mode: RO
+  name: Trig
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].Trig
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Set to arm trigger. Reset to 0 to disarm. Automatically reset when
+    trigger FSM returns to idle.
+  mode: RW
+  name: Arm
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].Arm
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Set to automatically re-arm after triggered.
+  mode: RW
+  name: KeepArm
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].KeepArm
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Force threshold crossed strobe output.
+  mode: RW
+  name: ForceThrCrs
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].ForceThrCrs
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Force trigger. Does not affect the state of the FSM.
+  mode: RW
+  name: ForceTrig
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].ForceTrig
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Revolution signal delay counter
+  mode: RO
+  name: RevSigDlyCnt
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].RevSigDlyCnt
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Revolution signal period counter to measure revolution signal period
+    (in clock cycles)
+  mode: RO
+  name: RevSigPrdCnt
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].RevSigPrdCnt
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Revolution signal period count (in clock cycles)
+  mode: RO
+  name: RevSigPrd
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].RevSigPrd
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Revolution signal period count (in us)
+  mode: RO
+  name: RevSigPrdUs
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].RevSigPrdUs
+  precision: null
+  type: float
+  units: null
+- !claws.LeafNode
+  description: Window length counter
+  mode: RO
+  name: WndCnt
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].WndCnt
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Current window index
+  mode: RO
+  name: WndIdx
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].WndIdx
+  precision: null
+  type: UInt16
+  units: null
+- !claws.LeafNode
+  description: Current ADC data value
+  mode: RO
+  name: Dat
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].Dat
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Current integral value (integral starts at start of current window)
+  mode: RO
+  name: DatInt
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].DatInt
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Integral value as latched at last deadline
+  mode: RO
+  name: DatIntLch
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].DatIntLch
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: WndCnt counter value at last threshold crossing
+  mode: RO
+  name: WndCntAtThrCrs
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].WndCntAtThrCrs
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: String indicating the current state
+  mode: RO
+  name: stateStr
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].stateStr
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Revolution signal delay until start of first window
+  mode: RW
+  name: RevSigDly
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].RevSigDly
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Maximum window index (must be <= NUM_WNDS_G hard limit)
+  mode: RW
+  name: WndIdxMax
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].WndIdxMax
+  precision: null
+  type: UInt16
+  units: null
+- !claws.LeafNode
+  description: Window 0 length (in clock cycles)
+  mode: RW
+  name: WndLngts[0]
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].WndLngts[0]
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Window 0 length (in us)
+  mode: RW
+  name: WndLngtsUs[0]
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].WndLngtsUs[0]
+  precision: null
+  type: float
+  units: null
+- !claws.LeafNode
+  description: Window 0 integral threshold
+  mode: RW
+  name: DatIntThrs[0]
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].DatIntThrs[0]
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Window 1 length (in clock cycles)
+  mode: RW
+  name: WndLngts[1]
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].WndLngts[1]
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Window 1 length (in us)
+  mode: RW
+  name: WndLngtsUs[1]
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].WndLngtsUs[1]
+  precision: null
+  type: float
+  units: null
+- !claws.LeafNode
+  description: Window 1 integral threshold
+  mode: RW
+  name: DatIntThrs[1]
+  path: claws.Zynq7SoC.Application.AbortTrigs.RevSyncIntTrig[1].DatIntThrs[1]
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.Zynq7SoC.Application.FrameRateLimiter.WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: AXI stream clock frequency generic value
+  mode: RO
+  name: AXIS_CLK_FREQ_G
+  path: claws.Zynq7SoC.Application.FrameRateLimiter.AXIS_CLK_FREQ_G
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Rate limiter refresh rate generic value
+  mode: RO
+  name: REFRESH_RATE_G
+  path: claws.Zynq7SoC.Application.FrameRateLimiter.REFRESH_RATE_G
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Default maximum frame rate generic value
+  mode: RO
+  name: DEFAULT_MAX_RATE_G
+  path: claws.Zynq7SoC.Application.FrameRateLimiter.DEFAULT_MAX_RATE_G
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: Sets the Frame Rate limit (in units of Units of 'REFRESH_RATE_G').  Zero
+    value means no limit
+  mode: RW
+  name: MaxFrameRate
+  path: claws.Zynq7SoC.Application.FrameRateLimiter.MaxFrameRate
+  precision: null
+  type: UInt32
+  units: null
+- !claws.LeafNode
+  description: '1: Assert back pressure when rate throttling, 0: Drop frames when
+    rate throttling'
+  mode: RW
+  name: BackpressureMode
+  path: claws.Zynq7SoC.Application.FrameRateLimiter.BackpressureMode
+  precision: null
+  type: UInt1
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.AdcDropFifo[0].WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Maximum depth of the Fifo
+  mode: RO
+  name: MaxDepth
+  path: claws.AdcDropFifo[0].MaxDepth
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Number of elements in the Fifo
+  mode: RO
+  name: Size
+  path: claws.AdcDropFifo[0].Size
+  precision: null
+  type: UInt64
+  units: null
+- !claws.LeafNode
+  description: Number of dropped frames
+  mode: RO
+  name: FrameDropCnt
+  path: claws.AdcDropFifo[0].FrameDropCnt
+  precision: null
+  type: UInt64
+  units: null
+- !claws.LeafNode
+  description: Clear all counters
+  mode: WO
+  name: ClearCnt
+  path: claws.AdcDropFifo[0].ClearCnt
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.AdcProcessor[0].WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Frame Rx Counter
+  mode: RO
+  name: FrameCount
+  path: claws.AdcProcessor[0].FrameCount
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Frame Error Counter
+  mode: RO
+  name: ErrorCount
+  path: claws.AdcProcessor[0].ErrorCount
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Byte Rx Counter
+  mode: RO
+  name: ByteCount
+  path: claws.AdcProcessor[0].ByteCount
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Number of FFTs to average together
+  mode: RW
+  name: FftAveraging
+  path: claws.AdcProcessor[0].FftAveraging
+  precision: null
+  type: UInt12
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.AdcDropFifo[1].WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Maximum depth of the Fifo
+  mode: RO
+  name: MaxDepth
+  path: claws.AdcDropFifo[1].MaxDepth
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Number of elements in the Fifo
+  mode: RO
+  name: Size
+  path: claws.AdcDropFifo[1].Size
+  precision: null
+  type: UInt64
+  units: null
+- !claws.LeafNode
+  description: Number of dropped frames
+  mode: RO
+  name: FrameDropCnt
+  path: claws.AdcDropFifo[1].FrameDropCnt
+  precision: null
+  type: UInt64
+  units: null
+- !claws.LeafNode
+  description: Clear all counters
+  mode: WO
+  name: ClearCnt
+  path: claws.AdcDropFifo[1].ClearCnt
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Force write of device without recursion
+  mode: WO
+  name: WriteDevice
+  path: claws.AdcProcessor[1].WriteDevice
+  precision: null
+  type: str
+  units: null
+- !claws.LeafNode
+  description: Frame Rx Counter
+  mode: RO
+  name: FrameCount
+  path: claws.AdcProcessor[1].FrameCount
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Frame Error Counter
+  mode: RO
+  name: ErrorCount
+  path: claws.AdcProcessor[1].ErrorCount
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Byte Rx Counter
+  mode: RO
+  name: ByteCount
+  path: claws.AdcProcessor[1].ByteCount
+  precision: null
+  type: int
+  units: null
+- !claws.LeafNode
+  description: Number of FFTs to average together
+  mode: RW
+  name: FftAveraging
+  path: claws.AdcProcessor[1].FftAveraging
+  precision: null
+  type: UInt12
+  units: null

@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 
-from claws.gui import start_gui
 from claws.data import ZMQCfg
+from claws.gui import start_gui
 
 from ._parse_args_helper import ZMQArgs, add_zmq_args
 

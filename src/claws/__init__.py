@@ -1,3 +1,3 @@
-from .errors import Error
+from .errors import CLAWSBaseError, YAMLError
 
-__all__ = ["Error"]
+__all__ = ["CLAWSBaseError", "YAMLError"]
