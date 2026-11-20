@@ -1,7 +1,75 @@
 
 # Overview
 
-[todo]
+## Rough system architecture
+
+- **On-device (Red Pitaya):**
+  - Register stream: DMA-based data transfer over TCP.
+  - ADC Stream 1: TCP data stream mapped to ADC 1.
+  - ADC Stream 2: TCP data stream mapped to ADC 2.
+
+- **ZMQ Server:**
+  - Hosts and runs the main application.
+  - Handles communication with the Red Pitaya.
+  - Forwards read and write access requests between clients and the device.
+  - Distributes device data and status updates to connected clients.
+
+- **PyDM GUI (Expert Access):**
+  - Connects to the ZMQ Server.
+  - Provides expert-level access to the system.
+  - Supports both read and write operations through the ZMQ Server.
+  - Allows experts to monitor, control, and configure the system.
+
+- **EPICS V3 Server (to be developed):**
+  - Connects to the ZMQ Server.
+  - Listens for device data and status updates.
+  - Exposes system parameters through EPICS V3 PVs.
+  - Handles system configuration and control through the ZMQ Server.
+
+## System architecture flowchart
+
+```mermaid
+flowchart TB
+    subgraph RP["Red Pitaya (On-device)"]
+        REG["Register Stream<br/>DMA over TCP"]
+        ADC1["ADC Stream 1<br/>TCP"]
+        ADC2["ADC Stream 2<br/>TCP"]
+    end
+
+    subgraph SERVER["ZMQ Server"]
+        APP["Main Application"]
+        COMM["Communication Layer<br/>Read / Write Access"]
+        UPD["Data and Status Updates"]
+    end
+
+    subgraph CLIENTS["Client Applications"]
+        PYDM["PyDM GUI<br/>Expert Access<br/>Read / Write / Configuration"]
+        EPICS["EPICS V3 Server<br/>(To be developed)"]
+    end
+
+    REG <-->|"Register Read / Write"| COMM
+    ADC1 -->|"ADC Data"| COMM
+    ADC2 -->|"ADC Data"| COMM
+
+    COMM <--> APP
+    APP --> UPD
+
+    PYDM <-->|"Read / Write Commands<br/>and Updates"| APP
+    UPD -->|"Data / Status Updates"| PYDM
+
+    EPICS <-->|"Read / Write Commands<br/>and Updates"| APP
+    UPD -->|"Data / Status Updates"| EPICS
+```
+
+## Communication overview
+
+| Component | Communication | Purpose |
+|---|---|---|
+| Red Pitaya ↔ ZMQ Server | TCP | Register access and ADC data streaming |
+| PyDM ↔ ZMQ Server | ZMQ | Expert access, monitoring, control, and configuration (read/write) |
+| EPICS V3 ↔ ZMQ Server | ZMQ (to be implemented) | PV updates, monitoring, and configuration |
+
+**Note:** The ZMQ Server acts as the central communication and control layer. PyDM provides direct expert-level read/write access through ZMQ, while the EPICS V3 server will provide a standardized EPICS interface for integration with the wider control system.
 
 # Installation
 
