@@ -9,7 +9,7 @@ from typing import Any, Self
 import zmq
 import zmq.asyncio
 
-from ._commands import Register
+from ._register import Register
 
 _LOG = getLogger(__name__)
 
@@ -22,15 +22,13 @@ class AsyncRougeTimeoutError(AsyncRougeClientError, TimeoutError): ...
 
 @dataclass(slots=True, frozen=True)
 class Cfg:
-    host: str
-    mem_map_port: int = 9000
-    dma_stream_ports: list = field(default_factory=list)
+    host: str = "localhost"
+    port: int = 9000
     binary_protocol: bool = True
-    timeout: timedelta = timedelta(seconds=10)
-    reconnection_delay: timedelta = timedelta(seconds=1)
+    timeout = timedelta(microseconds=10)
 
     def get_port(self) -> int:
-        return self.mem_map_port + 1 if self.binary_protocol else 0
+        return self.port + 1 if self.binary_protocol else 0
 
 
 def _create_req_socket(

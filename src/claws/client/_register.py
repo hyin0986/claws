@@ -6,9 +6,9 @@ from enum import IntFlag, StrEnum, unique
 
 @unique
 class Access(IntFlag):
-    READ = 1
-    WRITE = 2
-    READ_WRITE = READ | WRITE
+    RO = 1
+    WO = 2
+    RW = RO | WO
 
 
 @unique
@@ -25,7 +25,7 @@ class Register[ValueType]:
     """Converts the value"""
 
     def generate_get_request(self, attr: Attr = Attr.GET) -> bytes:
-        assert Access.READ in self.permission, (
+        assert Access.RO in self.access, (
             "Register does not have read permission!"
         )
 
@@ -41,9 +41,7 @@ class Register[ValueType]:
     def generate_set_request(
         self, value: ValueType, attr: Attr = Attr.SET
     ) -> bytes:
-        assert Access.WRITE in self.permission, (
-            "Register does not write permission!"
-        )
+        assert Access.WO in self.access, "Register does not write permission!"
 
         return pickle.dumps(
             {
