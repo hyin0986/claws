@@ -73,6 +73,15 @@ flowchart TB
 
 # Installation
 
+## Git and Submodules
+
+1. Set up SSH key authentication for `github.com`.
+2. Clone the repository recursively, including all submodules:
+
+   ```bash
+   git clone --recursive git@github.com:hyin0986/claws.git
+   ```
+
 ## Install Miniforge
 
 `Miniforge` is a lightweight, community-maintained installer for the Conda and Mamba package managers. It is preconfigured to download packages exclusively from the free and open-source `conda-forge` channel by default.
