@@ -1,3 +1,0 @@
-[submodule "external/kek-abort-daq"]
-	path = external/kek-abort-daq
-	url = https://github.com/burbschat/kek-abort-daq.git
