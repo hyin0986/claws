@@ -23,9 +23,9 @@ class AsyncRougeTimeoutError(AsyncRougeClientError, TimeoutError): ...
 @dataclass(slots=True, frozen=True)
 class Cfg:
     host: str = "localhost"
-    port: int = 9000
+    port: int = 9099
     binary_protocol: bool = True
-    timeout = timedelta(microseconds=10)
+    timeout = timedelta(milliseconds=10)
 
     def get_port(self) -> int:
         return self.port + 1 if self.binary_protocol else 0
@@ -43,7 +43,6 @@ def _create_req_socket(
     sock.setsockopt(zmq.REQ_CORRELATE, 1)
 
     sock.connect(f"tcp://{cfg.host}:{cfg.get_port()}")
-
     _LOG.info(f"REQ connected to port '{cfg.host}:{cfg.get_port()}'")
 
     return sock
@@ -55,7 +54,6 @@ def _create_mon_socket(
     """Create PUB/SUB monitoring socket."""
 
     sock = context.socket(zmq.SUB)
-
     sock.setsockopt(zmq.LINGER, 0)
     sock.setsockopt(zmq.SUBSCRIBE, b"")
 
@@ -160,4 +158,4 @@ class AsyncRougeClient:
         if isinstance(result, Exception):
             raise result
 
-        return result
+        return register.to_value(result)

@@ -11,8 +11,11 @@ async def run() -> None:
         to_value=None,
     )
     async with AsyncRougeClient(cfg=Cfg()) as client:
-        print(client.get_value(register))
+        print("test:", await client.get_value(register))
 
 
 def main():
-    asyncio.run(run)
+    asyncio.run(run())
+
+if __name__ == "__main__":
+    main()
