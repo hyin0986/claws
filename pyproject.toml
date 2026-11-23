@@ -8,8 +8,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "claws"
 authors = [{ name = "claws", email = "/dev/null@belle2.org" }]
-license = { file = "LICENSE" }
-# classifiers = ["License :: OSI Approved :: MIT License"]
+license = "MIT"
 dynamic = ["version"]
 dependencies = []
 
