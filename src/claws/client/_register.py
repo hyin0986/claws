@@ -1,8 +1,9 @@
 import pickle
-from collections.abc import Callable
 from dataclasses import dataclass
 from enum import IntFlag, StrEnum, unique
-from typing import Any
+
+from ._unpacker import UnpackProtocol
+
 
 @unique
 class Access(IntFlag):
@@ -21,7 +22,7 @@ class Attr(StrEnum):
 class Register[ValueType]:
     access: Access
     path: str
-    to_value: Callable[[str | bytes | ValueType | Any], ValueType]
+    unpacker: UnpackProtocol[ValueType]
     """Converts the value"""
 
     def generate_get_request(self, attr: Attr = Attr.GET) -> bytes:

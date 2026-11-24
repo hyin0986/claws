@@ -50,8 +50,8 @@ The two ADC data streams are available at
 """
 
 _DEFAULT_DEVICE_HOST: Final[str] = "10.0.123.100"
-_DEFAULT_DEVICE_MEM_PORT: Final[int] = "9000"
-_DEFAULT_DEVICE_ADC_BASE_PORT: Final[int] = "10000"
+_DEFAULT_DEVICE_MEM_PORT: Final[int] = 9000
+_DEFAULT_DEVICE_ADC_BASE_PORT: Final[int] = 10000
 
 
 def add_device_args(parser: ArgumentParser) -> ArgumentParser:

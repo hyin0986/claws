@@ -4,7 +4,6 @@ import lzma
 from collections.abc import Callable
 from dataclasses import fields, is_dataclass
 from io import BytesIO
-from pathlib import Path
 from types import TracebackType
 from typing import Any, Final, Self
 
@@ -14,7 +13,7 @@ import yaml
 
 from claws.errors import YAMLError
 
-from ._pr_node import LeafNode, ArrayLeafNode, EnumLeafNode
+from ._pr_node import ArrayLeafNode, EnumLeafNode, LeafNode
 
 LZMA_FORMAT: Final[int] = lzma.FORMAT_XZ
 _CRC_CHECK: Final[int] = lzma.CHECK_CRC64
@@ -197,21 +196,6 @@ class CLAWSCSafeDumper(yaml.CSafeDumper):
 _register_representer(CLAWSCSafeDumper)
 
 
-# def _is_writeable_file(file: Path) -> bool:
-#     """Checks if a given file path is writeable."""
-#     open(file, "wb")
-#     assert file.is_file()
-
-#     tmp_file = Path(file.parent.absolute()) / ".diamond_framework_temp_file"
-#     try:
-#         with open(tmp_file, "wb") as _:
-#             pass
-#         tmp_file.unlink()  # delete created test tmp file
-#         return True
-#     except OSError:
-#         return False
-
-
 class YAMLFile:
     """Dumps the ``BeamDump`` and ``Results`` in a compressed yaml file.
 
@@ -238,7 +222,7 @@ class YAMLFile:
     _io: BytesIO | None = None
     """Internal buffer"""
 
-    _output_stream: Path
+    _output_stream: BytesIO
     """output file path"""
 
     def __init__(self, stream: BytesIO, compress: bool = True):

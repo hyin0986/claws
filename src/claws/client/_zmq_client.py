@@ -1,10 +1,9 @@
 import asyncio
-import pickle
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import timedelta
 from logging import getLogger
 from types import TracebackType
-from typing import Any, Self
+from typing import Self
 
 import zmq
 import zmq.asyncio
@@ -125,14 +124,15 @@ class AsyncRougeClient:
 
         _LOG.info("Async Rogue client closed")
 
-    async def get_value[ValueType](self, register: Register[ValueType]) -> Any:
+    async def get_value[ValueType](
+        self, register: Register[ValueType]
+    ) -> bytes:
         """Execute a remote PyRogue node attribute."""
 
         if self._closed or self._request_socket is None:
             raise AsyncRougeClientError("Client is not connected")
 
         payload = register.generate_get_request()
-        print(register)
 
         async with self._lock:
             try:
@@ -153,9 +153,4 @@ class AsyncRougeClient:
                     f"Failed to read from {register!s}"
                 ) from exc
 
-        result: Any = pickle.loads(response)
-
-        if isinstance(result, Exception):
-            raise result
-
-        return register.to_value(result)
+        return response

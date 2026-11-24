@@ -1,17 +1,17 @@
 import base64
 import logging
 import threading
+from dataclasses import asdict
 from io import BytesIO
 from typing import Self, TypedDict
-from dataclasses import asdict
 
 import zmq
-from pyrogue._Node import Node as RogueNode
-from pyrogue._Variable import BaseVariable as RogueVariable
+from pyrogue import BaseVariable as RogueVariable
+from pyrogue import Node as RogueNode
 
-from claws.data._pr_node import LeafNode, ArrayLeafNode, EnumLeafNode
+from claws.data._pr_node import ArrayLeafNode, EnumLeafNode, LeafNode
 from claws.data._yaml_serialization import YAMLFile
-from claws.errors import DiscoveryServerError, YAMLError, CLAWSBaseError
+from claws.errors import CLAWSBaseError, DiscoveryServerError, YAMLError
 
 _LOG = logging.getLogger(__name__)
 
@@ -36,12 +36,20 @@ def _construct_node(
         mode=var.mode,
     )
     if var.enum is not None:
-        return EnumLeafNode(**asdict(node), enum_labels=[value for value in var.enum.values() if value not in ['ParentFalse', 'ExtDepFalse']])
+        return EnumLeafNode(
+            **asdict(node),
+            enum_labels=[
+                value
+                for value in var.enum.values()
+                if value not in ["ParentFalse", "ExtDepFalse"]
+            ],
+        )
     if var.ndType is not None:
         return ArrayLeafNode(
             **asdict(node), size=_parse_array_size_from_type(var.typeStr)
         )
     return node
+
 
 class Nodes(TypedDict):
     variables: list[LeafNode]
@@ -54,7 +62,9 @@ def discover_device_tree(
 ) -> Nodes:
     """Serialize a PyRogue node into a JSON-compatible dictionary."""
     variables = root.variableList
-    vars = (var for var in variables if var.enum is None and var.ndType is None)
+    vars = (
+        var for var in variables if var.enum is None and var.ndType is None
+    )
     enum_vars = (var for var in variables if var.enum is not None)
     array_vars = (var for var in variables if var.ndType is not None)
     return Nodes(
