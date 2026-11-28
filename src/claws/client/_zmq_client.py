@@ -1,12 +1,12 @@
 import asyncio
-from dataclasses import dataclass
-from datetime import timedelta
 from logging import getLogger
 from types import TracebackType
 from typing import Self
 
 import zmq
 import zmq.asyncio
+
+from claws.data._pyrogue_cfgs import ZMQClientCfg
 
 from ._register import Register
 
@@ -19,19 +19,8 @@ class AsyncRougeClientError(Exception): ...
 class AsyncRougeTimeoutError(AsyncRougeClientError, TimeoutError): ...
 
 
-@dataclass(slots=True, frozen=True)
-class Cfg:
-    host: str = "localhost"
-    port: int = 9099
-    binary_protocol: bool = True
-    timeout = timedelta(milliseconds=10)
-
-    def get_port(self) -> int:
-        return self.port + 1 if self.binary_protocol else 0
-
-
 def _create_req_socket(
-    context: zmq.asyncio.Context, cfg: Cfg
+    context: zmq.asyncio.Context, cfg: ZMQClientCfg
 ) -> zmq.asyncio.Socket:
     """Create binary RPC REQ socket."""
 
@@ -48,7 +37,7 @@ def _create_req_socket(
 
 
 def _create_mon_socket(
-    context: zmq.asyncio.Context, cfg: Cfg
+    context: zmq.asyncio.Context, cfg: ZMQClientCfg
 ) -> zmq.asyncio.Socket:
     """Create PUB/SUB monitoring socket."""
 
@@ -63,7 +52,7 @@ def _create_mon_socket(
 
 
 class AsyncRougeClient:
-    _cfg: Cfg
+    _cfg: ZMQClientCfg
     """Connection details and protocol (plain json or pickel json)"""
 
     _request_socket: zmq.asyncio.Socket | None = None
@@ -81,7 +70,7 @@ class AsyncRougeClient:
     _closed: bool = False
     """if close had been called."""
 
-    def __init__(self, cfg: Cfg) -> None:
+    def __init__(self, cfg: ZMQClientCfg) -> None:
         self._cfg = cfg
 
     async def __aenter__(self) -> Self:
@@ -133,6 +122,38 @@ class AsyncRougeClient:
             raise AsyncRougeClientError("Client is not connected")
 
         payload = register.generate_get_request()
+
+        async with self._lock:
+            try:
+                await self._request_socket.send(payload)
+
+                response: bytes = await asyncio.wait_for(
+                    self._request_socket.recv(),
+                    timeout=self._cfg.timeout.total_seconds(),
+                )
+
+            except (TimeoutError, zmq.ZMQError) as exc:
+                self._request_socket.close()
+                self._request_socket = _create_req_socket(
+                    self._context, self._cfg
+                )
+
+                raise AsyncRougeTimeoutError(
+                    f"Failed to read from {register!s}"
+                ) from exc
+
+        return response
+
+
+    async def set_value[ValueType](
+        self, register: Register[ValueType], value: ValueType
+    ) -> bytes:
+        """Execute a remote PyRogue node attribute."""
+
+        if self._closed or self._request_socket is None:
+            raise AsyncRougeClientError("Client is not connected")
+
+        payload = register.generate_set_request(value)
 
         async with self._lock:
             try:

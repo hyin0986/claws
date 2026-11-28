@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+from datetime import timedelta
 
 from claws.definitions import (
     DEVICE_ADCS,
@@ -16,6 +17,15 @@ from claws.definitions import (
 class ZMQCfg:
     host: str = "localhost"
     port: int = ROUGE_DEFAULT_ZMQ_BASE_PORT
+
+
+@dataclass(slots=True, frozen=True)
+class ZMQClientCfg(ZMQCfg):
+    timeout = timedelta(milliseconds=100)
+    binary_protocol: bool = True
+
+    def get_port(self) -> int:
+        return self.port + 1 if self.binary_protocol else 0
 
 
 @dataclass(slots=True, frozen=True)

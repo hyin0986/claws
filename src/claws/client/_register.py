@@ -1,22 +1,7 @@
 import pickle
 from dataclasses import dataclass
-from enum import IntFlag, StrEnum, unique
 
-from ._unpacker import UnpackProtocol
-
-
-@unique
-class Access(IntFlag):
-    RO = 1
-    WO = 2
-    RW = RO | WO
-
-
-@unique
-class Attr(StrEnum):
-    GET = "get"
-    SET = "set"
-
+from ._unpacker import UnpackProtocol, Attr, Access
 
 @dataclass(slots=True, frozen=True)
 class Register[ValueType]:
@@ -52,6 +37,3 @@ class Register[ValueType]:
                 "kwargs": {},
             }
         )
-
-    # def unpack_get_request(raw: bytes) -> ValueType:
-    #     python.
