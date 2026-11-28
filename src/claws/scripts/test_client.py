@@ -7,7 +7,7 @@ import numpy.typing as npt
 from claws.data._trigger_cfg import ThresholdTriggerCfg
 
 from claws.client._redpitaya_registers import ThresholdTriggerRegisters
-from claws.client._zmq_client import AsyncRougeClient
+from claws.client._zmq_client import AsyncRougeClient, ZMQClientCfg
 
 PREFIX = "claws.Zynq7SoC.Application.AbortTrigs.ThrTrig[0]"
 THRESHOLD_TRIGGER_REGISTERS = ThresholdTriggerRegisters.with_parent_path(PREFIX)
@@ -37,16 +37,10 @@ async def read_threhsold_trigger(client: AsyncRougeClient):
 
     print(trigger)
 
-
-
 async def run() -> None:
-    register = Register(
-        access=Access.RO,
-        path="claws.AdcProcessor[0].WaveformData",
-        to_value=ToNumpyArray(expected_dtype=np.int16, expected_size=0x4000),
-    )
-    async with AsyncRougeClient(cfg=Cfg()) as client:
-        print("test:", await client.get_value(register))
+
+    async with AsyncRougeClient(cfg=ZMQClientCfg(host="10.0.123.100")) as client:
+        await read_threhsold_trigger(client)
 
 
 def main():
